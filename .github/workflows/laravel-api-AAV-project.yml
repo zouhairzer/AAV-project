@@ -16,7 +16,7 @@ jobs:
       mysql:
         image: mysql:8.0
         env:
-          MYSQL_DATABASE: carpriceestimator
+          MYSQL_DATABASE: avito
           MYSQL_ROOT_PASSWORD: password
         ports:
           - 3306:3306
@@ -27,17 +27,17 @@ jobs:
       with:
         php-version: 'latest'
     - uses: actions/checkout@v3
-    
+
     - name: Install Dependencies
       run: composer install
-      
+
     - name: Setup Laravel
       run: |
-        cp .env.example .env
+        cp .env.test .env
         php artisan key:generate
 
     - name: Run migrations
       run: php artisan migrate --no-interaction
-      
+
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       run: php artisan test tests/Unit
