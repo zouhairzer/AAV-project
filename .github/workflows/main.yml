@@ -16,7 +16,6 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: 62.72.37.105
-          username: u820736800
-          password: u820736800ZERZKHANE
-          server-dir: /
+          server: ftp.zouhair.coders-strike.tech
+          username: u820736800.zerzkhan1949
+          password: ZERZkhan1949
