@@ -34,7 +34,6 @@ class AuthController extends Controller
     }
 
 
-
     public function login(Request $request)
     {
         $retrieve = $request->only('name','email');
