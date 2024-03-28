@@ -13,10 +13,10 @@ class UserController extends Controller
     public function CreateUser(Request $request)
     {
         $UserValidate = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|string|min:8',
-            'role' => 'required|string',
+            'password' => 'required|min:8',
+            'role' => 'required',
         ]);
 
         $user = new User();
