@@ -19,4 +19,4 @@ jobs:
           server: 62.72.37.105
           username: u820736800
           password: u820736800ZERZKHANE
-          server-dir: /public_html
+          server-dir: /
