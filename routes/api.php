@@ -24,5 +24,5 @@ Route::post('CreateUser',[UserController::class,'CreateUser']);
 Route::PUT('UpdateUser',[UserController::class,'UpdateUser']);
 Route::DELETE('DeleteUser',[UserController::class,'DeleteUser']);
 Route::get('GetUser',[UserController::class,'GetUser']);
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);

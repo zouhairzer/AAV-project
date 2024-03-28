@@ -36,7 +36,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $retrieve = $request->only('name','email');
+        $retrieve = $request->only('password','email');
 
         if(Auth::attempt($retrieve))
         {
@@ -59,6 +59,6 @@ class AuthController extends Controller
             'email'=> $user->email,
         ];
 
-        return JWT::encode($payload, env('JWT_SECRET'));
+        return JWT::encode($payload, env('JWT_SECRET'),'HS256');
     }
 }
