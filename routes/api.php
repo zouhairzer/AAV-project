@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VoitureController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,5 +25,9 @@ Route::post('CreateUser',[UserController::class,'CreateUser']);
 Route::PUT('UpdateUser/{id}',[UserController::class,'UpdateUser']);
 Route::DELETE('DeleteUser',[UserController::class,'DeleteUser']);
 Route::get('GetUser',[UserController::class,'GetUser']);
+
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
+
+Route::get('getAllVoitures', [VoitureController::class, 'index']);
+Route::post('EstimationPrixVoitures', [VoitureController::class, 'EstimationPrixVoitures']);

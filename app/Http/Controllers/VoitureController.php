@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\c;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Voiture;
 
 class VoitureController extends Controller
 {
@@ -13,7 +13,8 @@ class VoitureController extends Controller
      */
     public function index()
     {
-        //
+        $voitures = Voiture::all();
+        return response()->json($voitures, 201);
     }
 
     /**
@@ -27,9 +28,28 @@ class VoitureController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function EstimationPrixVoitures(Request $request)
     {
-        //
+        $voitures = $request->validate([
+            'marque' => 'required',
+            'modele' => 'required',
+            'annee' => 'required',
+        ]);
+
+        $selectVoituresSimilaire = Voiture::where('marque', $voitures['marque'])
+                                            ->where('modele',$voitures['modele'])
+                                            ->where('annee', $voitures['annee'])
+                                            ->get();
+
+        if($selectVoituresSimilaire->isEmpty())
+        {
+            return response()->json(['message'=>'aucune voitures s'], 404);
+        }
+
+        $total = $selectVoituresSimilaire->sum('prix');
+        $price = $total/$selectVoituresSimilaire->count();
+
+        return response()->json(['estimation'=>$price]);
     }
 
     /**
