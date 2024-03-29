@@ -21,7 +21,7 @@ use App\Http\Controllers\AuthController;
 // });
 
 Route::post('CreateUser',[UserController::class,'CreateUser']);
-Route::PUT('UpdateUser',[UserController::class,'UpdateUser']);
+Route::PUT('UpdateUser/{id}',[UserController::class,'UpdateUser']);
 Route::DELETE('DeleteUser',[UserController::class,'DeleteUser']);
 Route::get('GetUser',[UserController::class,'GetUser']);
 Route::post('register', [AuthController::class, 'register']);

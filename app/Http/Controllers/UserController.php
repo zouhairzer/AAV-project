@@ -12,10 +12,10 @@ use App\Models\User;
 class UserController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     public function CreateUser(Request $request)
     {
@@ -26,6 +26,7 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
+
         $user = new User();
         $user->name = $UserValidate['name'];
         $user->email = $UserValidate['email'];
@@ -34,26 +35,32 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json('Creation avec success');
+        return response()->json('Creation avec success' ,201);
     }
 
-    public function UpdateUser(Request $request)
+
+
+    public function UpdateUser(Request $request, $id)
     {
-        $user = User::findOrfail($request->id);
+        $user = User::findOrfail($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
         $user->role = $request->role;
 
         $user->update();
-        return response()->json('Mettre à jour avec success ');
+        return response()->json($user,202);
     }
+
+
 
     public function DeleteUser(Request $request)
     {
         $deleteUser = User::findOrfail($request->id)->delete();
-        return response()->json('suppression avec success');
+        return response()->json('suppression avec success', 202);
     }
+
+
 
     public function GetUser()
     {

@@ -6,9 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Firebase\JWT\JWT;
 use Firebase\JWT\key;
+use App\Models\User;
 
 
 class AuthController extends Controller
@@ -27,7 +27,6 @@ class AuthController extends Controller
         $user->email = $valider['email'];
         $user->password = Hash::make($valider['password']);
         $user->role = $valider['role'];
-
         $user->save();
 
         return response()->json('Register Avec Succes');
