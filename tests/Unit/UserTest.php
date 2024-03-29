@@ -55,6 +55,7 @@ class UserTest extends TestCase
     }
 
 
+    
     public function test_update_user()
     {
         $this->refresh_table('users');
